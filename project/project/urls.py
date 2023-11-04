@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from bikini_bottom.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', home)
 ]
