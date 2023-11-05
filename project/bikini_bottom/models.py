@@ -27,9 +27,9 @@ class Facility(models.Model) :
         ('monthly', 'Per Bulan'),
         ('annual', 'Per Tahun')
     ]
-    name = models.CharField(max_Length=50)
-    types = models.CharField(max_Length=30, choices=TYPE_CHOICES)
-    status = models.CharField(max_Length=20, choices=STATUS_CHOICES, default='proposed')
+    name = models.CharField(max_length=50)
+    types = models.CharField(max_length=30, choices=TYPE_CHOICES)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='proposed')
     open = models.BooleanField(default=False)
     location = models.PointField(srid=4326, spatial_index=True)
     price = models.DecimalField(max_digits=10, decimal_places=2) # didepan koma ada 8 angka, dibelakang koma ada 2
