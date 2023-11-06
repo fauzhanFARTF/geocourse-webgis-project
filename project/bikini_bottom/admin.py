@@ -11,7 +11,7 @@ class LocationAdmin(admin.OSMGeoAdmin):
 @admin.register(Facility)
 class FacilityAdmin(LocationAdmin):
     list_filter = ['status', 'operator'] 
-    list_display = ['id', 'name', 'status', 'operator']
+    list_display = ['id', 'name', 'status','price', 'operator']
 
 # admin.site.register(Facility)
 # class FacilityAdmin(LocationAdmin):
