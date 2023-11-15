@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.core.serializers import serialize  #melakukan serialisasi menghasilkan data geojson
 from .models import Facility 
-from django.http import HttpResponse 
+from django.http import HttpResponse ,JsonResponse
 
 # Create your views here.
 def home(request):
@@ -10,3 +10,11 @@ def home(request):
 def home_map_api(request):
     data = serialize('geojson', Facility.objects.all())
     return HttpResponse(data, content_type="json") 
+
+def custom_map_api(request):
+    data = {
+        'nama':'faiz',
+        'usia': 28,
+        'perempuan': False
+        }
+    return JsonResponse (data)
