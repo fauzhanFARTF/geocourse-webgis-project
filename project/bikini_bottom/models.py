@@ -8,6 +8,7 @@ class Facility(models.Model) :
         ('goverment','Pemerintahan'),
         ('public','Fasilitas Umum'),
         ('park', 'Taman'),
+        ('house','Perumahan'),
         ('restaurant', 'Restoran')
     ]
     
