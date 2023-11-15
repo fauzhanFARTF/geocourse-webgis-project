@@ -12,6 +12,10 @@ def home_map_api(request):
     return HttpResponse(data, content_type="json") 
 
 def custom_map_api(request):
+    model = Facility.objects.all()
+    for item in model :
+        print(item.name)
+        
     data = {
         'nama':'faiz',
         'usia': 28,
