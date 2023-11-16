@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.core.serializers import serialize  #melakukan serialisasi menghasilkan data geojson
 from .models import Facility 
 from django.http import HttpResponse ,JsonResponse
+import ast
 
 # Create your views here.
 def home(request):
@@ -25,11 +26,7 @@ def custom_map_api(request):
         # }
         feature = {
             "types" :"Feature",
-            "geometry" :
-                {
-                    "type"  : "point",
-                    "coordinates":item.location.json
-                },
+            "geometry": ast.literal_eval(item.location.json),
             "properties" : 
                 {
                     'nama' : item.name,
