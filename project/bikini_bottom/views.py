@@ -12,13 +12,24 @@ def home_map_api(request):
     return HttpResponse(data, content_type="json") 
 
 def custom_map_api(request):
+    features = []
+    
     model = Facility.objects.all()
     for item in model :
-        print(item.name)
-        
-    data = {
-        'nama':'faiz',
-        'usia': 28,
-        'perempuan': False
+        # print(item.name)
+        feature = {
+            'nama' : item.name,
+            'tipe' : item.types,
+            'harga' : item. price,
+            'satuan_harga' : item.price_unit
         }
-    return JsonResponse (data)
+        features.append(feature)
+    print(features)
+    return JsonResponse(features, safe = False)
+    
+    # data = {
+    #     'nama':'faiz',
+    #     'usia': 28,
+    #     'perempuan': False
+    #     }
+    # return JsonResponse (data)
