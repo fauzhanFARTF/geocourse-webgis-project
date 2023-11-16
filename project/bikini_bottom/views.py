@@ -13,7 +13,16 @@ def home_map_api(request):
     return HttpResponse(data, content_type="json") 
 
 def custom_map_api(request):
-    features = []
+    features = {
+        'type': 'FeatureCollection',
+        'crs' : {
+            'type': 'name',
+            'properties': {
+                'name' : 'EPSG:4326'
+            },
+        },
+        'features' : []
+    }
     
     model = Facility.objects.all()
     for item in model :
@@ -25,18 +34,18 @@ def custom_map_api(request):
             # 'satuan_harga' : item.price_unit
         # }
         feature = {
-            "types" :"Feature",
-            "geometry": ast.literal_eval(item.location.json),
-            "properties" : 
+            'type' :'Feature',
+            'geometry': ast.literal_eval(item.location.json),
+            'properties' : 
                 {
                     'nama' : item.name,
                     'tipe' : item.types,
-                    'harga' : item. price,
+                    'harga' : item.price,
                     'satuan_harga' : item.price_unit
                 },
         }
-        features.append(feature)
-    print(features)
+        features['features'].append(feature)
+    # print(features)
     return JsonResponse(features, safe = False)
     
     # data = {
