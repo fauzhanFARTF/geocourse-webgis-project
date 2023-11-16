@@ -17,11 +17,26 @@ def custom_map_api(request):
     model = Facility.objects.all()
     for item in model :
         # print(item.name)
+        # feature = { 
+            # 'nama' : item.name,
+            # 'tipe' : item.types,
+            # 'harga' : item. price,
+            # 'satuan_harga' : item.price_unit
+        # }
         feature = {
-            'nama' : item.name,
-            'tipe' : item.types,
-            'harga' : item. price,
-            'satuan_harga' : item.price_unit
+            "types" :"Feature",
+            "geometry" :
+                {
+                    "type"  : "point",
+                    "coordinates":item.location.json
+                },
+            "properties" : 
+                {
+                    'nama' : item.name,
+                    'tipe' : item.types,
+                    'harga' : item. price,
+                    'satuan_harga' : item.price_unit
+                },
         }
         features.append(feature)
     print(features)
