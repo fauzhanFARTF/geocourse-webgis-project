@@ -25,7 +25,7 @@
           maxZoom: 19,
           attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(peta);
-      fetch('/api/custom-map/')
+      fetch('{% url "home_api" %}')
         //.then(x=> console.log(x.text))
         .then(response => response.json())
         .then(function(json){

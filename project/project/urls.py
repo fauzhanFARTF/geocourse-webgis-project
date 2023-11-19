@@ -23,8 +23,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
-    path('api/home-map/', home_map_api),
-    path('api/custom-map/', custom_map_api),
+    path('api/home-map/', home_map_api, name='home_api'),
+    path('api/custom-api/', custom_map_api, name='custom_api'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
