@@ -30,7 +30,7 @@
         .then(response => response.json())
         .then(function(json){
             console.log(json)
-            L.geoJSON(json).addTo(peta)
+            L.geoJSON(json).bindPopup('Hello World').addTo(peta)
         })
         // .then(json => console.log(json))
     </script>
