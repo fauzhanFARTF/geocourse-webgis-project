@@ -30,9 +30,22 @@
         .then(response => response.json())
         .then(function(json){
             console.log(json)
-            L.geoJSON(json).bindPopup('Hello World').addTo(peta)
+            L.geoJSON(json, {
+                onEachFeature: function(feature, Layer) {
+                    console.log(feature.properties)
+                    // Layer.bindPopup(feature.properties.name)
+                    Layer.bindPopup(
+                        `
+                            <h5>${feature.properties.name}</h5>
+                            <ul>
+                                <li>${feature.properties.price}</li>
+                                <li>${feature.properties.price_unit}</li>
+                            </ul>
+                        `
+                    )
+                }
+            }).addTo(peta)
         })
         // .then(json => console.log(json))
     </script>
 {% endblock %}
-  
