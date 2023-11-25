@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     
+    # Leaflet
+    'leaflet',
+    
     # Custom Apps
     'bikini_bottom',
 ]

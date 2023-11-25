@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.core.serializers import serialize  #melakukan serialisasi menghasilkan data geojson
 from .models import Facility 
+from .forms import FacilityForm
 from django.http import HttpResponse ,JsonResponse
 import ast
 
@@ -54,3 +55,18 @@ def custom_map_api(request):
     #     'perempuan': False
     #     }
     # return JsonResponse (data)
+    
+def facility_form_add(request):
+    # pass
+    if request.method == 'POST':
+        form = FacilityForm(request.POST)
+        if form.is_valid():
+            # logic for post data
+            return 'Hello World'
+    else :
+        form = FacilityForm()
+        
+    context =  {
+       'form' : form 
+    }
+    return render(request,'pages/facility_add.html', context)

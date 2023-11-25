@@ -1,0 +1,18 @@
+{% extends 'context/base.html' %}
+{% load leaflet_tags %}
+
+{% block title %}
+    Add Facility
+{% endblock %}
+
+{% block head %}
+   {% leaflet_js plugins="forms" %}
+   {% leaflet_css plugins="forms" %}
+{% endblock %}
+
+{% block body %}
+    <form method="POST">
+        {{ form }}
+        <input type="submit"/>
+    </form>
+{% endblock %}
