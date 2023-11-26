@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.serializers import serialize  #melakukan serialisasi menghasilkan data geojson
 from .models import Facility 
 from .forms import FacilityForm
@@ -59,10 +59,13 @@ def custom_map_api(request):
 def facility_form_add(request):
     # pass
     if request.method == 'POST':
-        form = FacilityForm(request.POST)
+        form = FacilityForm(request.POST, request.FILES)
         if form.is_valid():
             # logic for post data
-            return 'Hello World'
+            data = form.save(commit=False)
+            data.operator = request.user
+            data.save()
+            return redirect('home')
     else :
         form = FacilityForm()
         
