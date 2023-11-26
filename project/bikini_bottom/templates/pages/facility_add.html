@@ -1,5 +1,6 @@
 {% extends 'context/base.html' %}
 {% load leaflet_tags %}
+{% load crispy_forms_tags %}
 
 {% block title %}
     Add Facility
@@ -11,8 +12,9 @@
 {% endblock %}
 
 {% block body %}
+    <h1>Menambahkan Fasilitas Baru</h1>
     <form method="POST">
-        {{ form }}
+        {{ form | crispy }}
         <input type="submit"/>
     </form>
 {% endblock %}

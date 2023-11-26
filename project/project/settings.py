@@ -48,6 +48,10 @@ INSTALLED_APPS = [
     # Leaflet
     'leaflet',
     
+    # Crispy Form
+    "crispy_forms",
+    "crispy_bootstrap5",
+    
     # Custom Apps
     'bikini_bottom',
 ]
@@ -161,3 +165,8 @@ LEAFLET_CONFIG = {
     # 'DEFAULT_PRECISION': 6,
     'TILES': 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 }
+
+# CRISPY FORM SETTINGS
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
