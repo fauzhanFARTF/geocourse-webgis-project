@@ -73,3 +73,9 @@ def facility_form_add(request):
        'form' : form 
     }
     return render(request,'pages/facility_add.html', context)
+
+def facility_list(request):
+    context = {
+        'data' : Facility.objects.all()
+    }
+    return render(request,'pages/facility_list.html', context)
