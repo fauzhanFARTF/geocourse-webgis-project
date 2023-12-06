@@ -6,7 +6,7 @@
 
 {% block head %}{% endblock %}
 {% block body %}
-    <h1>Daftar Fasilitas</h1>
+    <h1>Your Facility List</h1>
     <a href="{% url 'facility_form_add' %}" class="btn btn-primary">Add Fasilitas</a>
 
     <!-- {{data}} -->
@@ -27,11 +27,29 @@
             <tr>
                 <td>{{item.name}}</td>
                 <td>{{item.types}}</td>
-                <td>{{item.status}}</td>
+                <td>
+                    {% if item.status == 'completed' %}
+                    <span class="badge rounded-pill bg-success">{{item.status}}</span>
+                    {% elif item.status == 'under_review' %}
+                    <span class="badge rounded-pill bg-dark">{{item.status}}</span>
+                    {% elif item.status == 'cancelled' %}
+                    <span class="badge rounded-pill bg-danger">{{item.status}}</span>
+                    {% elif item.status == 'proposed' %}
+                    <span class="badge rounded-pill bg-primary">{{item.status}}</span>
+                    {% elif item.status == 'under_construction' %}
+                    <span class="badge rounded-pill bg-warning text-dark">{{item.status}}</span>
+                    {% elif item.status == 'planned' %}
+                    <span class="badge rounded-pill bg-info text-dark">{{item.status}}</span>
+                    {% endif %}
+                </td>
                 <td>{{item.price}}</td>
                 <td>{{item.price_unit}}</td>
-                <td>{{item.photo}}</td>
-                <td>{{item.open}}</td>
+                <td><img src="{{item.photo.url}}" alt="{{item.photo}}" width = "130px" height="100px"></td>
+                <td>
+                    {% if item.open %} ✅ 
+                    {% else %} ⛔
+                    {% endif %}
+                </td>
             </tr>
             {% endfor %}
         </tbody>
