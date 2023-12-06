@@ -73,3 +73,6 @@ def facility_form_add(request):
        'form' : form 
     }
     return render(request,'pages/facility_add.html', context)
+
+def facility_list(request):
+    return render(request,'pages/facility_list.html')
