@@ -8,4 +8,32 @@
 {% block body %}
     <h1>Daftar Fasilitas</h1>
     <a href="{% url 'facility_form_add' %}" class="btn btn-primary">Add Fasilitas</a>
+
+    <!-- {{data}} -->
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Types</th>
+                <th>Status</th>
+                <th>Price</th>
+                <th>Price Unit</th>
+                <th>Photo</th>
+                <th>Open ?</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data%}
+            <tr>
+                <td>{{item.name}}</td>
+                <td>{{item.types}}</td>
+                <td>{{item.status}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.price_unit}}</td>
+                <td>{{item.photo}}</td>
+                <td>{{item.open}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
