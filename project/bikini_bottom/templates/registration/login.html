@@ -1,1 +1,12 @@
-<h1>Hello world</h1>
+{% extends 'context/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% endblock %}
+{% block body %}
+    <h2>Please Login in here</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
