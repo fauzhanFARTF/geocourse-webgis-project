@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
-    <!-- Right Side -->
+    <!-- Left Side -->
     <div>
       <a class="navbar-brand" href="{% url 'home' %}">
         <img src="/media/base/spongebob-logo.png" alt="Main Logo" width="90" height="50">
@@ -13,9 +13,14 @@
       <a href="" class="btn">Public Infrastructure</a>
       <a href="" class="btn">About</a>
     </div>
-    <!-- Left Side -->
+    <!-- Right Side -->
     <div>
+      {% if request.user.is_authenticated %}
+      <a href="{% url 'logout' %}" class="btn btn-outline-warning">Logout</a>
       {{request.user}}
+      {% else %}
+      <a href="{% url 'login' %}" class="btn btn-outline-primary">Login</a>
+      {% endif %}
     </div>
 
   </div>
