@@ -76,6 +76,7 @@ def facility_form_add(request):
 
 def facility_list(request):
     context = {
-        'data' : Facility.objects.all()
+        # 'data' : Facility.objects.all()
+        'data' : Facility.objects.filter(operator = request.user)
     }
     return render(request,'pages/facility_list.html', context)
