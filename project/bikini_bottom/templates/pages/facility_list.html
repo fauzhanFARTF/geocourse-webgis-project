@@ -20,6 +20,7 @@
                 <th>Price Unit</th>
                 <th>Photo</th>
                 <th>Open ?</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -49,6 +50,10 @@
                     {% if item.open %} ✅ 
                     {% else %} ⛔
                     {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'facility_form_update' item.id %}" class="btn btn-sm btn-success">Update</a>
+                    <a href="" class="btn btn-sm btn-danger">Delete</a>
                 </td>
             </tr>
             {% endfor %}

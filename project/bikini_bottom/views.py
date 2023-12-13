@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.core.serializers import serialize  #melakukan serialisasi menghasilkan data geojson
 from .models import Facility 
 from .forms import FacilityForm
@@ -73,6 +73,22 @@ def facility_form_add(request):
        'form' : form 
     }
     return render(request,'pages/facility_add.html', context)
+
+def facility_form_update(request , pk):
+    objek = get_object_or_404(Facility, id=pk)
+    form = FacilityForm(request.POST or None, request.FILES or None, instance=objek)
+    
+    if request.method == 'POST':
+        if form.is_valid():
+            data = form.save(commit=False)
+            data.operator = request.user
+            data.save()
+            return redirect('facility_list')
+    context = {
+        'form' : form
+    }
+    return render(request,'pages/facility_update.html', context)
+    
 
 def facility_list(request):
     context = {
