@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from bikini_bottom.views import home, home_map_api, custom_map_api, facility_form_add, facility_form_update, facility_list
+from bikini_bottom.views import home, home_map_api, custom_map_api, facility_form_add, facility_form_update, facility_form_delete, facility_list
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -27,6 +27,7 @@ urlpatterns = [
     path('api/custom-api/', custom_map_api, name='custom_api'),
     path('facility/add/', facility_form_add, name='facility_form_add'),
     path('facility/update/<int:pk>/', facility_form_update, name='facility_form_update'),
+    path('facility/delete/<int:pk>/', facility_form_delete, name='facility_form_delete'),
     path('facility/', facility_list, name='facility_list'),
 
     # Sistem Authentication

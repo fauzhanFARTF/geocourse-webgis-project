@@ -89,6 +89,17 @@ def facility_form_update(request , pk):
     }
     return render(request,'pages/facility_update.html', context)
     
+def facility_form_delete(request, pk):
+    objek = get_object_or_404(Facility, id=pk)
+    form = FacilityForm(request.POST or None, request.FILES or None, instance=objek)
+    
+    if request.method == 'POST':
+        objek.delete()
+        return redirect('facility_list')
+    context = {
+        'form' : form
+    }
+    return render(request, 'pages/facility_delete.html', context)
 
 def facility_list(request):
     context = {
