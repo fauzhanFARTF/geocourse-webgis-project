@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    Add Facility
+    Update Facility
 {% endblock %}
 
 {% block head %}
@@ -12,10 +12,10 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Menambahkan Fasilitas Baru</h1>
+    <h1>Mengupdate Fasilitas Baru</h1>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form | crispy }}
-        <input type="submit" class="btn btn-primary"/>
+        <input type="submit" class="btn btn-success"/>
     </form>
 {% endblock %}
